@@ -27,10 +27,10 @@ public class UserService {
 	private final UserRepository userRepository;
 //	private final SubscribeRepository subscribeRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
-	/*
+
 	@Value("${file.path}")
 	private String uploadFolder;
-
+/*
 	@Transactional
 	public User 회원프로필사진변경(int principalId, MultipartFile profileImageFile) {
 		UUID uuid = UUID.randomUUID(); // uuid
@@ -54,7 +54,8 @@ public class UserService {
 		
 		return userEntity;
 	} // 더티체킹으로 업데이트 됨.
-
+*/
+	/*
 	@Transactional(readOnly = true)
 	public UserProfileDto 회원프로필(int pageUserId, int principalId) {
 		UserProfileDto dto = new UserProfileDto(); 
@@ -82,8 +83,7 @@ public class UserService {
 		
 		return dto;
 	}
-	*/
-	
+*/
 	
 	@Transactional
 	public User 회원수정(int id, User user) {
@@ -94,10 +94,10 @@ public class UserService {
 		// 2. 영속화된 오브젝트를 수정 - 더티체킹 (업데이트 완료)
 		userEntity.setUserid(user.getUserid());
 		
-		String rawPassword = user.getPassword();
+		String rawPassword = user.getUserpw();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword); //비번 암호
 		 
-		userEntity.setPassword(encPassword);
+		userEntity.setUserpw(encPassword);
 		userEntity.setUseremail(user.getUseremail());
 		userEntity.setUsername(user.getUsername());
 		userEntity.setPoint(user.getPoint());

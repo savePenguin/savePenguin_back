@@ -31,7 +31,7 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 		Map<String, Object> userInfo = oauth2User.getAttributes();
 		
 		String userid = "facebook_"+(String) userInfo.get("id");
-		String password = new BCryptPasswordEncoder().encode(UUID.randomUUID().toString());
+		String userpw = new BCryptPasswordEncoder().encode(UUID.randomUUID().toString());
 		String useremail = (String) userInfo.get("useremail");
 		String username = (String) userInfo.get("name");
 		
@@ -39,8 +39,8 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 		
 		if(userEntity == null) { // 페이스북 최초 로그인
 			User user = User.builder()
-					.username(username)
-					.password(password)
+					.userid(userid)
+					.userpw(userpw)
 					.useremail(useremail)
 					.username(username)
 					.role("ROLE_USER")
