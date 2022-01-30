@@ -35,12 +35,12 @@ public class User {
 	
 	@Column(length = 100,  unique = true) // OAuth2 로그인을 위해 칼럼 늘리기(제약조건)
 	private String userid;//username 
-	@Column(nullable = false)
-	private String password;
+	//@Column(nullable = false)
+	private String userpw;
 	
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private String username; //name
-	@Column(nullable = false)
+//	@Column(nullable = false)
 	private String useremail; //email
 	private int point; //최종 포인트 
 
@@ -63,7 +63,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userid=" + userid + ", password=" + password + ", username=" + username + ", email=" + useremail + ", point=" + point + ",  role=" + role +", createDate="
+		return "User [id=" + id + ", userid=" + userid + ", password=" + userpw + ", username=" + username + ", email=" + useremail + ", point=" + point + ", createDate="
 				+ createDate + "]";
 	}
 

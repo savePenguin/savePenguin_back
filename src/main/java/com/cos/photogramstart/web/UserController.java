@@ -17,14 +17,14 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	
 	private final UserService userService;
-	/*
+/*
 	@GetMapping("/user/{pageUserId}")
 	public String profile(@PathVariable int pageUserId, Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		UserProfileDto dto = userService.회원프로필(pageUserId, principalDetails.getUser().getId());
 		model.addAttribute("dto", dto);
 		return "user/profile";
 	}
-	*/
+*/
 	
 	@GetMapping("/user/{id}/update")
 	public String updateForm(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails) {

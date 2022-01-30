@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ import com.cos.photogramstart.web.dto.auth.SignupDto;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor // final된 필드 모두 DI 할때 사용
-@RestController // 1. IoC 2. 파일을 리턴하는 컨트롤러
+@Controller // 1. IoC 2. 파일을 리턴하는 컨트롤러
 public class AuthController {
 
 	private final AuthService authService;
@@ -35,14 +36,15 @@ public class AuthController {
 	//}
 	
 
-	@GetMapping("/auth/signin")
+	@RequestMapping("/auth/signin2")
 	public String signinForm() {
-		return "auth/signin 접근 완료";
+		//System.out.println("anLogin()");
+		return "auth/signin";
 	}
 
 	@GetMapping("/auth/signup")
 	public String signupForm() {
-		return "auth/signup 접근 완료";
+		return "auth/signup";
 	}
 
 	// 회원가입버튼 -> /auth/signup -> /auth/signin

@@ -38,12 +38,12 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return user.getUserpw();
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return user.getUserid();
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return (String) attributes.get("name");
+		return (String) attributes.get("username");
 	}
 
 }

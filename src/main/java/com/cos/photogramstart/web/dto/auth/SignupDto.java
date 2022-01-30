@@ -15,7 +15,7 @@ public class SignupDto { //회원가입 -> DB에 바로 넣기
 	@NotBlank // 무조건 받아야 
 	private String userid; //아이디 
 	@NotBlank
-	private String password; // 비번 
+	private String userpw; // 비번 
 	@NotBlank
 	private String useremail; //이메일 
 	@NotBlank
@@ -24,7 +24,7 @@ public class SignupDto { //회원가입 -> DB에 바로 넣기
 	public User toEntity() {
 		return User.builder() 
 				.userid(userid) //아이디 
-				.password(password)
+				.userpw(userpw)
 				.useremail(useremail)
 				.username(username)
 				.build(); // 바로 리턴 

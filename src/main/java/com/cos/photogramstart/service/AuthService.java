@@ -26,9 +26,9 @@ public class AuthService {
 	@Transactional // Write(Insert, Update, Delete)
 	public User 회원가입(User user) throws RuntimeException{
 		// 회원가입 진행
-		String rawPassword = user.getPassword();
+		String rawPassword = user.getUserpw();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-		user.setPassword(encPassword);
+		user.setUserpw(encPassword);
 		user.setRole("ROLE_USER"); // 관리자 ROLE_ADMIN
 		User userEntity = null;
 		userEntity = userRepository.save(user);
