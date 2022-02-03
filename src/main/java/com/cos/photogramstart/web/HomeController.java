@@ -1,19 +1,19 @@
 package com.cos.photogramstart.web;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
+import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.io.File;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 //gsn으로 처
 @Controller
@@ -52,31 +52,83 @@ public class HomeController {
 		System.out.println(request.getParameter("userid"));
 		System.out.println(request.getParameter("userpw"));
 	}
+/*
 
 	@RequestMapping("/TestImage")
-	public @ResponseBody String androidTestWithRequest2(MultipartHttpServletRequest request){
+	public @ResponseBody void androidTestWithRequest2(@RequestParam String userid,
+														@RequestParam String qrname,
+														@RequestParam String cuptype,
+														@RequestParam  file){
 
-		String map = "temp";
 		//등록된 파일 관리하기
-		System.out.println(request.getParameter("userid"));
-		System.out.println(request.getParameter("qrname"));
-		System.out.println(request.getParameter("cuptype"));
-		List<MultipartFile> files = request.getFiles("files");
+		System.out.println(userid);
+		System.out.println(qrname);
+		System.out.println(cuptype);
+		ResponseBody cur = file;
 
-		for (int i = 0; i < files.size(); i++) {
-			MultipartFile file = files.get(i);
-			System.out.println(file.getName());
-			System.out.println(file.getOriginalFilename());
-			System.out.println(file.getResource());
-
+		System.out.println(cur.getName());
+		System.out.println(cur.getOriginalFilename());
+		try {
+			System.out.println(cur.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
-		return map;
 	}
+*/
+
+
+
 
 	@RequestMapping("/TestUpdateQR")
 	public void androidTestWithRequest3(HttpServletRequest request){
 		System.out.println(request.getParameter("userid"));
 		System.out.println(request.getParameter("userpw"));
 	}
+
+
+
+	//qrcode 생성
+	@PostMapping("/qrcodetest")
+	public void uploadQRcode3 (MultipartHttpServletRequest request) {
+
+		String qrname = request.getParameter("qrname");
+		String usrname = request.getParameter("userid");
+		int cuptype = Integer.parseInt(request.getParameter("cuptype"));
+		System.out.println("qrname = " + qrname);
+		System.out.println("usrname = " + usrname);
+		System.out.println("cuptype = " + cuptype);
+
+		MultipartFile image =  request.getFile("cuppic");
+
+
+
+		String userid = request.getParameter("userid");
+		try {
+			byte[] data = image.getBytes();
+			//byte[] data2 = image2.getBytes();
+			//byte[] data3 = image3.getBytes();
+			System.out.println(Arrays.toString(data));
+			//System.out.println(Arrays.toString(data2));
+			//System.out.println(Arrays.toString(data3));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("QR code 생성 진입");
+		//image 업로드 과정
+		if (image == null || image.isEmpty()) {
+			System.out.println("실패");
+			try {
+				byte[] data = image.getBytes();
+				System.out.println(Arrays.toString(data));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			System.out.println("성성공");
+		}
+
+	}
+
 }
