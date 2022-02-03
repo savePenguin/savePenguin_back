@@ -58,6 +58,9 @@ public class HomeController {
 
 		String map = "temp";
 		//등록된 파일 관리하기
+		System.out.println(request.getParameter("userid"));
+		System.out.println(request.getParameter("qrname"));
+		System.out.println(request.getParameter("cuptype"));
 		List<MultipartFile> files = request.getFiles("files");
 
 		for (int i = 0; i < files.size(); i++) {
@@ -65,8 +68,15 @@ public class HomeController {
 			System.out.println(file.getName());
 			System.out.println(file.getOriginalFilename());
 			System.out.println(file.getResource());
+
 		}
 
 		return map;
+	}
+
+	@RequestMapping("/TestUpdateQR")
+	public void androidTestWithRequest3(HttpServletRequest request){
+		System.out.println(request.getParameter("userid"));
+		System.out.println(request.getParameter("userpw"));
 	}
 }
