@@ -1,23 +1,12 @@
 package com.cos.photogramstart.service;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.cos.photogramstart.domain.user.User;
 import com.cos.photogramstart.domain.user.UserRepository;
-import com.cos.photogramstart.handler.ex.CustomApiException;
-import com.cos.photogramstart.handler.ex.CustomException;
 import com.cos.photogramstart.handler.ex.CustomValidationApiException;
-import com.cos.photogramstart.web.dto.user.UserProfileDto;
-
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

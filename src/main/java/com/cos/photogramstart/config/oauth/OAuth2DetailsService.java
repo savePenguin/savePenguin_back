@@ -35,7 +35,7 @@ public class OAuth2DetailsService extends DefaultOAuth2UserService{
 		String useremail = (String) userInfo.get("useremail");
 		String username = (String) userInfo.get("name");
 		
-		User userEntity = userRepository.findByUsername(username);
+		User userEntity = userRepository.findByUserid(username);
 		
 		if(userEntity == null) { // 페이스북 최초 로그인
 			User user = User.builder()

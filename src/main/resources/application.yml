@@ -21,7 +21,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create # create, update, none 
+      ddl-auto: update # create, update, none 
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
@@ -35,11 +35,15 @@ spring:
     user:
       name: test
       password: 1234   
-    oauth2:      client:        registration:
+
+    oauth2:
+      client:
+        registration:
           facebook:
             client-id: 315293796826930
             client-secret: 487af9479023b8c0e58f913b411327cf
-            scope:            - public_profile
+            scope:
+            - public_profile
             - email            
 
 file:
